@@ -16,7 +16,7 @@ import hu.zsof.gitsearchapp.databinding.FragmentSearchBinding
 class SearchFragment : Fragment() {
 
     private lateinit var binding: FragmentSearchBinding
-    private lateinit var adapter: SearchAdapter
+    private lateinit var searchAdapter: SearchAdapter
     private val viewModel: SearchViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,12 +30,19 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        searchAdapter = SearchAdapter()
         setupBindings()
     }
 
     private fun setupBindings() {
         binding.apply {
             searchButton.setOnClickListener {
+                viewModel.search(searchTextInput.text.toString())
+                viewModel.searchResult.observe(viewLifecycleOwner) { result ->
+                    searchAdapter.searchList = result
+                    recyclerSearchItem.adapter = searchAdapter
+                }
             }
         }
     }

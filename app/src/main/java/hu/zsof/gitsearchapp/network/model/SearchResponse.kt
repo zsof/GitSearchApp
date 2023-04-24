@@ -1,8 +1,8 @@
-package hu.zsof.gitsearchapp.network.response
+package hu.zsof.gitsearchapp.network.model
 
 import com.squareup.moshi.Json
 
-data class RepositoryResultResponse(
+data class SearchResponse(
     val items: List<ProjectData>
 )
 
