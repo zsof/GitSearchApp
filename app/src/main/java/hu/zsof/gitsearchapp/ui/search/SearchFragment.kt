@@ -11,6 +11,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import hu.zsof.gitsearchapp.R
 import hu.zsof.gitsearchapp.adapter.SearchAdapter
 import hu.zsof.gitsearchapp.databinding.FragmentSearchBinding
+import hu.zsof.gitsearchapp.network.model.SearchResponse
+import hu.zsof.gitsearchapp.network.repository.Resource
 
 @AndroidEntryPoint
 class SearchFragment : Fragment() {
@@ -40,10 +42,30 @@ class SearchFragment : Fragment() {
             searchButton.setOnClickListener {
                 viewModel.search(searchTextInput.text.toString())
                 viewModel.searchResult.observe(viewLifecycleOwner) { result ->
-                    searchAdapter.searchList = result.items
+                    searchAdapter.searchList = result.data?.items ?: mutableListOf()
                     recyclerSearchItem.adapter = searchAdapter
                 }
             }
+
+            viewModel.searchResult.observe(viewLifecycleOwner) {
+                when(it){
+                    is Resource.Loading -> {
+                        animationView.visibility = View.VISIBLE
+                        animationView.playAnimation()
+                    }
+                    is Resource.Success -> {
+                        animationView.visibility = View.GONE
+                        animationView.pauseAnimation()
+                    }
+                    else -> {}
+                }
+            }
+
+            /*viewModel.isLoadingDone.observe(viewLifecycleOwner) {
+                if(it) {
+
+                }
+            }*/
         }
     }
 }

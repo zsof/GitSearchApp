@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import hu.zsof.gitsearchapp.network.model.SearchResponse
+import hu.zsof.gitsearchapp.network.repository.Resource
 import hu.zsof.gitsearchapp.network.repository.SearchRepository
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -13,10 +14,15 @@ import javax.inject.Inject
 class SearchViewModel @Inject constructor(private val searchRepository: SearchRepository) :
     ViewModel() {
 
-    val searchResult = MutableLiveData<SearchResponse>()
+    val isLoadingDone = MutableLiveData(false)
+
+    val searchResult = MutableLiveData<Resource<SearchResponse>>()
     fun search(query: String) {
         viewModelScope.launch {
+            //isLoadingDone.postValue(false)
+            searchResult.postValue(Resource.Loading())
             searchResult.postValue(searchRepository.getSearchResult(query))
+            //isLoadingDone.postValue(true)
         }
     }
 }
