@@ -1,5 +1,6 @@
 package hu.zsof.gitsearchapp.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -9,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import hu.zsof.gitsearchapp.R
 import hu.zsof.gitsearchapp.databinding.ItemSearchBinding
 import hu.zsof.gitsearchapp.network.model.ProjectData
+import java.text.SimpleDateFormat
+import java.util.*
 import javax.inject.Inject
 
 class SearchAdapter @Inject constructor() : RecyclerView.Adapter<SearchAdapter.ListViewHolder>() {
@@ -55,10 +58,15 @@ class SearchAdapter @Inject constructor() : RecyclerView.Adapter<SearchAdapter.L
 
     inner class ListViewHolder(private val binding: ItemSearchBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        @SuppressLint("SimpleDateFormat")
         fun bind(result: ProjectData) {
+            val formatStringToDate = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
+            val lastUpdate: Date = formatStringToDate.parse(result.updateDate) as Date
+            val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm")
+
             binding.name.text = result.name
             binding.description.text = result.desc
-            binding.lastUpdate.text = result.updateDate
+            binding.lastUpdate.text = formatter.format(lastUpdate)
             binding.starsNumber.text = result.starNumber.toString()
         }
     }
