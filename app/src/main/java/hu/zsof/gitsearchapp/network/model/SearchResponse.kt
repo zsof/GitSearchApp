@@ -3,7 +3,9 @@ package hu.zsof.gitsearchapp.network.model
 import com.squareup.moshi.Json
 
 data class SearchResponse(
-    val items: List<ProjectData>
+    @field:Json(name = "total_count")
+    val totalCount: Int,
+    val items: List<ProjectData>,
 )
 
 data class ProjectData(
@@ -20,7 +22,7 @@ data class ProjectData(
     @field:Json(name = "forks_count")
     val forkNumber: Int,
     @field:Json(name = "stargazers_count")
-    val starNumber: Int
+    val starNumber: Int,
 )
 
 data class OwnerData(

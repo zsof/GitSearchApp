@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">GitSearchApp</string>
     <string name="keywords">Keywords</string>
+    <string name="no_data">There is no data for this search</string>
 </resources>

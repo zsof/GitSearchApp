@@ -13,16 +13,11 @@ import javax.inject.Inject
 @HiltViewModel
 class SearchViewModel @Inject constructor(private val searchRepository: SearchRepository) :
     ViewModel() {
-
-    val isLoadingDone = MutableLiveData(false)
-
     val searchResult = MutableLiveData<Resource<SearchResponse>>()
     fun search(query: String) {
         viewModelScope.launch {
-            //isLoadingDone.postValue(false)
             searchResult.postValue(Resource.Loading())
             searchResult.postValue(searchRepository.getSearchResult(query))
-            //isLoadingDone.postValue(true)
         }
     }
 }
