@@ -40,7 +40,7 @@ class SearchFragment : Fragment() {
             searchButton.setOnClickListener {
                 viewModel.search(searchTextInput.text.toString())
                 viewModel.searchResult.observe(viewLifecycleOwner) { result ->
-                    searchAdapter.searchList = result
+                    searchAdapter.searchList = result.items
                     recyclerSearchItem.adapter = searchAdapter
                 }
             }

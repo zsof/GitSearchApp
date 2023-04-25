@@ -9,11 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import hu.zsof.gitsearchapp.R
 import hu.zsof.gitsearchapp.databinding.ItemSearchBinding
 import hu.zsof.gitsearchapp.network.model.ProjectData
-import hu.zsof.gitsearchapp.network.model.SearchResponse
 import javax.inject.Inject
 
 class SearchAdapter @Inject constructor() : RecyclerView.Adapter<SearchAdapter.ListViewHolder>() {
-    var searchList: List<SearchResponse>
+    var searchList: List<ProjectData>
         get() = differ.currentList
         set(value) {
             differ.submitList(value)
@@ -42,12 +41,12 @@ class SearchAdapter @Inject constructor() : RecyclerView.Adapter<SearchAdapter.L
 
     override fun getItemCount() = searchList.size
 
-    private val diffCallback = object : DiffUtil.ItemCallback<SearchResponse>() {
-        override fun areItemsTheSame(oldItem: SearchResponse, newItem: SearchResponse): Boolean {
+    private val diffCallback = object : DiffUtil.ItemCallback<ProjectData>() {
+        override fun areItemsTheSame(oldItem: ProjectData, newItem: ProjectData): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: SearchResponse, newItem: SearchResponse): Boolean {
+        override fun areContentsTheSame(oldItem: ProjectData, newItem: ProjectData): Boolean {
             return oldItem.hashCode() == newItem.hashCode()
         }
     }
@@ -56,13 +55,11 @@ class SearchAdapter @Inject constructor() : RecyclerView.Adapter<SearchAdapter.L
 
     inner class ListViewHolder(private val binding: ItemSearchBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(result: SearchResponse) {
-            result.items.forEach {
-                binding.name.text = it.name
-                binding.description.text = it.desc
-                binding.lastUpdate.text = it.updateDate
-                binding.starsNumber.text = it.starNumber.toString()
-            }
+        fun bind(result: ProjectData) {
+            binding.name.text = result.name
+            binding.description.text = result.desc
+            binding.lastUpdate.text = result.updateDate
+            binding.starsNumber.text = result.starNumber.toString()
         }
     }
 }

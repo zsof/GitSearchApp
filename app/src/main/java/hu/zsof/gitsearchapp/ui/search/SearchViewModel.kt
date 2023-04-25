@@ -13,7 +13,7 @@ import javax.inject.Inject
 class SearchViewModel @Inject constructor(private val searchRepository: SearchRepository) :
     ViewModel() {
 
-    val searchResult = MutableLiveData<List<SearchResponse>>()
+    val searchResult = MutableLiveData<SearchResponse>()
     fun search(query: String) {
         viewModelScope.launch {
             searchResult.postValue(searchRepository.getSearchResult(query))
