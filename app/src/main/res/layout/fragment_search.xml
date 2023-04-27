@@ -26,6 +26,7 @@
             android:id="@+id/searchTextInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:imeOptions="actionSearch"
             android:hint="@string/keywords"
             android:inputType="textCapWords" />
     </com.google.android.material.textfield.TextInputLayout>

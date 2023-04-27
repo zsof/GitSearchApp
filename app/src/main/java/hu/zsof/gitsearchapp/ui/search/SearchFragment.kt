@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
@@ -45,12 +46,22 @@ class SearchFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-       /* currentPageNumber = 1
-        arrowButtonsInvisible()
-        binding.searchTextInput.setText("")*/
+        /* currentPageNumber = 1
+         arrowButtonsInvisible()
+         binding.searchTextInput.setText("")*/
     }
 
     private fun setupBindings() {
+        binding.searchTextInput.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                arrowButtonsInvisible()
+                search()
+                this@SearchFragment.hideKeyboard()
+                return@setOnEditorActionListener true
+            }
+            return@setOnEditorActionListener false
+        }
+
         binding.searchButton.setOnClickListener {
             arrowButtonsInvisible()
 
