@@ -133,7 +133,7 @@
             android:maxLines="2"
             android:singleLine="false"
             android:textStyle="italic"
-            app:layout_constraintEnd_toEndOf="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/repositoryLink"
             app:layout_constraintTop_toBottomOf="@id/detailsRepositoryDesc"
             tools:text="Link" />

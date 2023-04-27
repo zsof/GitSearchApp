@@ -10,22 +10,6 @@ import androidx.navigation.NavController
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 
-fun NavController.safeNavigate(direction: NavDirections, args: Bundle? = null) {
-    currentDestination?.getAction(direction.actionId)?.run {
-        if (args == null) {
-            navigate(direction)
-        } else {
-            navigate(direction.actionId, args)
-        }
-    }
-}
-
-fun Fragment.safeNavigate(direction: NavDirections, args: Bundle? = null) {
-    if (isAdded) {
-        findNavController().safeNavigate(direction, args)
-    }
-}
-
 fun Context.hideKeyboard(view: View) {
     val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
     inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)

@@ -36,6 +36,11 @@ class SearchFragment : Fragment() {
         setupBindings()
     }
 
+    override fun onResume() {
+        super.onResume()
+        binding.searchTextInput.setText("")
+    }
+
     private fun setupBindings() {
         binding.apply {
             searchButton.setOnClickListener {
