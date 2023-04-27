@@ -26,7 +26,7 @@ class SearchAdapter @Inject constructor(private val searchList: List<ProjectData
                 val lastUpdate: Date = formatStringToDate.parse(updateDate) as Date
                 val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm")
 
-                binding.name.text = name
+                binding.reposiotryName.text = repositoryName
                 binding.description.text = desc
                 binding.lastUpdate.text = formatter.format(lastUpdate)
                 binding.starsNumber.text = starNumber.toString()

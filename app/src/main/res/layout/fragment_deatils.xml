@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true">
+
+
+        <TextView
+            android:id="@+id/detailsOwnerName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:textSize="24sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Owner Name" />
+
+        <ImageView
+            android:id="@+id/starIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_star"
+            app:layout_constraintEnd_toStartOf="@+id/starsNumber"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailsOwnerName" />
+
+        <TextView
+            android:id="@+id/starsNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/starIcon"
+            app:layout_constraintTop_toTopOf="@id/starIcon"
+            tools:text="6" />
+
+        <ImageView
+            android:id="@+id/detailsAvatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/starIcon" />
+
+        <TextView
+            android:id="@+id/detailsGithubLink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailsAvatar"
+            tools:text="Link" />
+
+        <TextView
+            android:id="@+id/repositoryName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="@string/rep_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailsGithubLink" />
+
+        <TextView
+            android:id="@+id/detailsRepositoryName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:layout_constraintStart_toEndOf="@id/repositoryName"
+            app:layout_constraintTop_toBottomOf="@id/detailsGithubLink"
+            tools:text="Repository name" />
+
+        <TextView
+            android:id="@+id/repositoryDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="@string/rep_description"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailsRepositoryName" />
+
+        <TextView
+            android:id="@+id/detailsRepositoryDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:layout_constraintStart_toEndOf="@id/repositoryDesc"
+            app:layout_constraintTop_toBottomOf="@id/detailsRepositoryName"
+            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
+
+        <TextView
+            android:id="@+id/repositoryLink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="@string/rep_link"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailsRepositoryDesc" />
+
+        <TextView
+            android:id="@+id/detailsRepositoryLink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:layout_constraintStart_toEndOf="@id/repositoryDesc"
+            app:layout_constraintTop_toBottomOf="@id/detailsRepositoryDesc"
+            tools:text="link" />
+
+        <TextView
+            android:id="@+id/repositoryFork"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="@string/rep_forks"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailsRepositoryLink" />
+
+        <TextView
+            android:id="@+id/detailsRepositoryFork"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:layout_constraintStart_toEndOf="@id/repositoryDesc"
+            app:layout_constraintTop_toBottomOf="@id/detailsRepositoryLink"
+            tools:text="3" />
+
+        <TextView
+            android:id="@+id/repositoryCreate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="@string/rep_create_date"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailsRepositoryFork" />
+
+        <TextView
+            android:id="@+id/detailsRepositoryCreate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:layout_constraintStart_toEndOf="@id/repositoryDesc"
+            app:layout_constraintTop_toBottomOf="@id/detailsRepositoryFork"
+            tools:text="2022-04-05" />
+
+        <TextView
+            android:id="@+id/repositoryUpdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="Last update: "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailsRepositoryCreate" />
+
+        <TextView
+            android:id="@+id/detailsRepositoryUpdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:layout_constraintStart_toEndOf="@id/repositoryDesc"
+            app:layout_constraintTop_toBottomOf="@id/detailsRepositoryCreate"
+            tools:text="2022-04-07" />
+
+
+
+        <!-- <com.airbnb.lottie.LottieAnimationView
+             android:id="@+id/animationView"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:background="@null"
+             android:visibility="invisible"
+             app:layout_constraintBottom_toBottomOf="parent"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toBottomOf="@id/searchTextInputLayout"
+             app:lottie_autoPlay="true"
+             app:lottie_loop="true"
+             app:lottie_rawRes="@raw/loading" />-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

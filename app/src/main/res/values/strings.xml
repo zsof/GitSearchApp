@@ -2,4 +2,9 @@
     <string name="app_name">GitSearchApp</string>
     <string name="keywords">Keywords</string>
     <string name="no_data">There is no data for this search</string>
+    <string name="rep_name">Name: </string>
+    <string name="rep_description">Description: </string>
+    <string name="rep_link">Link:</string>
+    <string name="rep_forks">Forks:</string>
+    <string name="rep_create_date">Create date:</string>
 </resources>

@@ -9,7 +9,8 @@ data class SearchResponse(
 )
 
 data class ProjectData(
-    val name: String,
+    @field:Json(name = "name")
+    val repositoryName: String,
     val owner: OwnerData,
     @field:Json(name = "description")
     val desc: String,
@@ -26,6 +27,8 @@ data class ProjectData(
 )
 
 data class OwnerData(
+    @field:Json(name = "login")
+    val ownerName: String,
     @field:Json(name = "avatar_url")
     val avatarUrl: String,
     @field:Json(name = "url")
