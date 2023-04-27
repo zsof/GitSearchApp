@@ -24,8 +24,6 @@ class SearchFragment : Fragment() {
     private lateinit var searchAdapter: SearchAdapter
 
     private val viewModel: SearchViewModel by viewModels()
-    private var currentPageNumber = 1
-    private var totalPageNumber = 0
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -41,18 +39,20 @@ class SearchFragment : Fragment() {
 
         setupBindings()
         subscribeToObservers()
+        setupAdapter()
     }
 
-    override fun onResume() {
-        super.onResume()
-
-        /* currentPageNumber = 1
-         arrowButtonsInvisible()
-         binding.searchTextInput.setText("")*/
+    private fun setupAdapter() {
+        viewModel.searchResult.observe(viewLifecycleOwner) { result ->
+            searchAdapter = SearchAdapter(result.data?.items ?: mutableListOf())
+            binding.recyclerSearchItem.adapter = searchAdapter
+        }
     }
 
     private fun setupBindings() {
-        arrowButtonsInvisible()
+        if ((viewModel.searchResult.value?.data?.totalCount ?: 0) == 0) {
+            arrowButtonsInvisible()
+        }
 
         binding.searchTextInput.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
@@ -78,33 +78,18 @@ class SearchFragment : Fragment() {
         }
 
         binding.nextButton.setOnClickListener {
-            currentPageNumber++
-            search(currentPageNumber)
-
-            binding.prevButton.setImageResource(R.drawable.ic_prev)
-            binding.prevButton.isEnabled = true
+            viewModel.currentPageNumber++
+            search(viewModel.currentPageNumber)
         }
 
         binding.prevButton.setOnClickListener {
-            currentPageNumber--
-            search(currentPageNumber)
-
-            if (currentPageNumber == 1) {
-                binding.prevButton.setImageResource(R.drawable.ic_prev_disable)
-                binding.prevButton.isEnabled = false
-            } else {
-                binding.prevButton.setImageResource(R.drawable.ic_prev)
-                binding.prevButton.isEnabled = true
-            }
+            viewModel.currentPageNumber--
+            search(viewModel.currentPageNumber)
         }
     }
 
     private fun search(page: Int = 0) {
         viewModel.search(binding.searchTextInput.text.toString(), page)
-        viewModel.searchResult.observe(viewLifecycleOwner) { result ->
-            searchAdapter = SearchAdapter(result.data?.items ?: mutableListOf())
-            binding.recyclerSearchItem.adapter = searchAdapter
-        }
     }
 
     private fun subscribeToObservers() {
@@ -125,19 +110,29 @@ class SearchFragment : Fragment() {
                         arrowButtonsInvisible()
                     } else {
                         val totalItems = it.data?.totalCount!!
-                        totalPageNumber =
+                        viewModel.totalPageNumber =
                             ceil(totalItems / Constants.RESULT_PER_PAGE.toDouble()).toInt()
 
-                        if (currentPageNumber == totalPageNumber) {
+                        if (viewModel.currentPageNumber == viewModel.totalPageNumber) {
                             binding.nextButton.setImageResource(R.drawable.ic_next_disable)
                             binding.nextButton.isEnabled = false
                         } else {
                             binding.nextButton.setImageResource(R.drawable.ic_next)
                             binding.nextButton.isEnabled = true
                         }
+
+                        if (viewModel.currentPageNumber == 1) {
+                            binding.prevButton.setImageResource(R.drawable.ic_prev_disable)
+                            binding.prevButton.isEnabled = false
+                        } else {
+                            binding.prevButton.setImageResource(R.drawable.ic_prev)
+                            binding.prevButton.isEnabled = true
+                        }
                     }
                 }
                 is ResultWrapper.Error -> {
+                    binding.animationView.visibility = View.GONE
+                    binding.animationView.pauseAnimation()
                     showToast(it.message)
                     arrowButtonsInvisible()
                 }
