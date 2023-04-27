@@ -33,7 +33,8 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/detailsOwnerName" />
+            app:layout_constraintTop_toBottomOf="@id/detailsOwnerName"
+            android:contentDescription="@string/star_icon_content_desc" />
 
         <TextView
             android:id="@+id/detailsRepositoryStars"
@@ -68,7 +69,8 @@
             android:scaleType="fitXY"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/detailsOwnerLink" />
+            app:layout_constraintTop_toBottomOf="@id/detailsOwnerLink"
+            android:contentDescription="@string/avatar_image_content_desc" />
 
         <TextView
             android:id="@+id/repName"
@@ -87,7 +89,7 @@
             android:layout_margin="8dp"
             android:textSize="18sp"
             android:textStyle="italic"
-            app:layout_constraintStart_toEndOf="@id/repName"
+            app:layout_constraintStart_toEndOf="@id/repositoryDesc"
             app:layout_constraintTop_toBottomOf="@id/detailsAvatar"
             tools:text="Repository name" />
 
@@ -134,7 +136,7 @@
             android:singleLine="false"
             android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/repositoryLink"
+            app:layout_constraintStart_toEndOf="@id/repositoryDesc"
             app:layout_constraintTop_toBottomOf="@id/detailsRepositoryDesc"
             tools:text="Link" />
 
@@ -155,7 +157,7 @@
             android:layout_margin="8dp"
             android:textSize="18sp"
             android:textStyle="italic"
-            app:layout_constraintStart_toEndOf="@id/repositoryFork"
+            app:layout_constraintStart_toEndOf="@id/repositoryDesc"
             app:layout_constraintTop_toBottomOf="@id/detailsRepositoryLink"
             tools:text="3" />
 
@@ -176,7 +178,7 @@
             android:layout_margin="8dp"
             android:textSize="18sp"
             android:textStyle="italic"
-            app:layout_constraintStart_toEndOf="@id/repositoryCreate"
+            app:layout_constraintStart_toEndOf="@id/repositoryDesc"
             app:layout_constraintTop_toBottomOf="@id/detailsRepositoryFork"
             tools:text="2022-04-05" />
 
@@ -197,7 +199,7 @@
             android:layout_margin="8dp"
             android:textSize="18sp"
             android:textStyle="italic"
-            app:layout_constraintStart_toEndOf="@id/repositoryUpdate"
+            app:layout_constraintStart_toEndOf="@id/repositoryDesc"
             app:layout_constraintTop_toBottomOf="@id/detailsRepositoryCreate"
             tools:text="2022-04-07" />
 

@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import hu.zsof.gitsearchapp.databinding.ItemSearchBinding
-import hu.zsof.gitsearchapp.module.LocalData
-import hu.zsof.gitsearchapp.network.model.ProjectData
+import hu.zsof.gitsearchapp.network.data.LocalData
+import hu.zsof.gitsearchapp.network.data.ProjectData
 import hu.zsof.gitsearchapp.ui.search.SearchFragmentDirections
 import java.text.SimpleDateFormat
 import java.util.*

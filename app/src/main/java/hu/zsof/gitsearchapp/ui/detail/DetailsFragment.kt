@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import hu.zsof.gitsearchapp.databinding.FragmentDetailsBinding
-import hu.zsof.gitsearchapp.module.LocalData
+import hu.zsof.gitsearchapp.network.data.LocalData
 import java.text.SimpleDateFormat
 import java.util.*
 

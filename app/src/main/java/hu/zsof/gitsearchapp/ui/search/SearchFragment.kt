@@ -10,7 +10,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import hu.zsof.gitsearchapp.R
 import hu.zsof.gitsearchapp.adapter.SearchAdapter
 import hu.zsof.gitsearchapp.databinding.FragmentSearchBinding
-import hu.zsof.gitsearchapp.network.repository.Resource
+import hu.zsof.gitsearchapp.network.wrapper.ResultWrapper
 import hu.zsof.gitsearchapp.util.Constants
 import hu.zsof.gitsearchapp.util.hideKeyboard
 import hu.zsof.gitsearchapp.util.showToast
@@ -45,9 +45,9 @@ class SearchFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        currentPageNumber = 1
+       /* currentPageNumber = 1
         arrowButtonsInvisible()
-        binding.searchTextInput.setText("")
+        binding.searchTextInput.setText("")*/
     }
 
     private fun setupBindings() {
@@ -91,11 +91,11 @@ class SearchFragment : Fragment() {
     private fun subscribeToObservers() {
         viewModel.searchResult.observe(viewLifecycleOwner) {
             when (it) {
-                is Resource.Loading -> {
+                is ResultWrapper.Loading -> {
                     binding.animationView.visibility = View.VISIBLE
                     binding.animationView.playAnimation()
                 }
-                is Resource.Success -> {
+                is ResultWrapper.Success -> {
                     binding.animationView.visibility = View.GONE
                     binding.animationView.pauseAnimation()
 
@@ -113,7 +113,7 @@ class SearchFragment : Fragment() {
                             if (currentPageNumber == totalPageNumber) View.INVISIBLE else View.VISIBLE
                     }
                 }
-                is Resource.Error -> {
+                is ResultWrapper.Error -> {
                     showToast(it.message)
                     arrowButtonsInvisible()
                 }

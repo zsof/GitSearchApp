@@ -1,6 +1,6 @@
 package hu.zsof.gitsearchapp.network
 
-import hu.zsof.gitsearchapp.network.model.SearchResponse
+import hu.zsof.gitsearchapp.network.data.SearchResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

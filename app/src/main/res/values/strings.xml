@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">GitSearchApp</string>
     <string name="keywords">Keywords</string>
-    <string name="no_data">There is no data for this search</string>
+    <string name="no_data">There is no data for this search!</string>
     <string name="rep_name">Name: </string>
     <string name="rep_description">Description: </string>
     <string name="rep_link">Link:</string>
@@ -9,4 +9,6 @@
     <string name="rep_create_date">Create date:</string>
     <string name="rep_last_update">Last update:</string>
     <string name="give_parameter">Please give some searching parameter!</string>
+    <string name="star_icon_content_desc">Star icon</string>
+    <string name="avatar_image_content_desc">Avatar Image</string>
 </resources>
