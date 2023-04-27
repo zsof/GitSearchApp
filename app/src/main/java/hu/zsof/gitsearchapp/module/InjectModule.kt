@@ -1,12 +1,12 @@
 package hu.zsof.gitsearchapp.module
 
 import android.content.Context
-import androidx.databinding.library.BuildConfig
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import hu.zsof.gitsearchapp.BuildConfig
 import hu.zsof.gitsearchapp.network.ApiService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
