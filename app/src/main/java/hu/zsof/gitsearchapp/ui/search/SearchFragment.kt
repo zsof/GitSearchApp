@@ -46,13 +46,14 @@ class SearchFragment : Fragment() {
         super.onResume()
 
         currentPageNumber = 1
-        binding.nextButton.visibility = View.INVISIBLE
-        binding.prevButton.visibility = View.INVISIBLE
+        arrowButtonsInvisible()
         binding.searchTextInput.setText("")
     }
 
     private fun setupBindings() {
         binding.searchButton.setOnClickListener {
+            arrowButtonsInvisible()
+
             if (binding.searchTextInput.text.isNullOrEmpty()) {
                 showToast(
                     getString(R.string.give_parameter),
@@ -102,6 +103,7 @@ class SearchFragment : Fragment() {
                         showToast(
                             getString(R.string.no_data),
                         )
+                        arrowButtonsInvisible()
                     } else {
                         val totalItems = it.data?.totalCount!!
                         totalPageNumber =
@@ -113,8 +115,14 @@ class SearchFragment : Fragment() {
                 }
                 is Resource.Error -> {
                     showToast(it.message)
+                    arrowButtonsInvisible()
                 }
             }
         }
+    }
+
+    private fun arrowButtonsInvisible() {
+        binding.prevButton.visibility = View.INVISIBLE
+        binding.nextButton.visibility = View.INVISIBLE
     }
 }

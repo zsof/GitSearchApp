@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import hu.zsof.gitsearchapp.databinding.FragmentDetailsBinding
@@ -19,7 +18,6 @@ import java.util.*
 @AndroidEntryPoint
 class DetailsFragment : Fragment() {
     private lateinit var binding: FragmentDetailsBinding
-    private val viewModel: DetailsViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
