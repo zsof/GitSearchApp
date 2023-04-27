@@ -8,4 +8,5 @@
     <string name="rep_forks">Forks:</string>
     <string name="rep_create_date">Create date:</string>
     <string name="rep_last_update">Last update:</string>
+    <string name="give_parameter">Please give some searching parameter!</string>
 </resources>

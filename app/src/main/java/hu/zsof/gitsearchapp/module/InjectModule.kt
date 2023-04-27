@@ -8,6 +8,7 @@ import hu.zsof.gitsearchapp.BuildConfig
 import hu.zsof.gitsearchapp.network.ApiService
 import hu.zsof.gitsearchapp.network.model.ProjectData
 import hu.zsof.gitsearchapp.network.repository.Resource
+import hu.zsof.gitsearchapp.util.Constants
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
@@ -42,7 +43,7 @@ class InjectModule {
 
         val retrofit =
             Retrofit.Builder()
-                .baseUrl("https://api.github.com/")
+                .baseUrl(Constants.BASE_URL)
                 .addConverterFactory(MoshiConverterFactory.create())
                 .client(okHttpClient)
                 .build()
