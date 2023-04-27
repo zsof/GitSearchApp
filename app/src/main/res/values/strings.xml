@@ -7,4 +7,5 @@
     <string name="rep_link">Link:</string>
     <string name="rep_forks">Forks:</string>
     <string name="rep_create_date">Create date:</string>
+    <string name="rep_last_update">Last update:</string>
 </resources>

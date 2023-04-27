@@ -1,13 +1,12 @@
 package hu.zsof.gitsearchapp.module
 
-import android.content.Context
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import hu.zsof.gitsearchapp.BuildConfig
 import hu.zsof.gitsearchapp.network.ApiService
+import hu.zsof.gitsearchapp.network.model.ProjectData
 import hu.zsof.gitsearchapp.network.repository.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -27,7 +26,7 @@ class InjectModule {
 
     @Singleton
     @Provides
-    operator fun invoke(@ApplicationContext context: Context): ApiService {
+    operator fun invoke(): ApiService {
         val interceptor = HttpLoggingInterceptor()
         if (BuildConfig.DEBUG) {
             interceptor.level = HttpLoggingInterceptor.Level.BODY
@@ -71,4 +70,8 @@ object NetworkWrapper {
             }
         }
     }
+}
+
+object LocalData {
+    var searchItem = ProjectData()
 }

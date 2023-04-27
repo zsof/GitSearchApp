@@ -3,9 +3,12 @@ package hu.zsof.gitsearchapp.adapter
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import hu.zsof.gitsearchapp.databinding.ItemSearchBinding
+import hu.zsof.gitsearchapp.module.LocalData
 import hu.zsof.gitsearchapp.network.model.ProjectData
+import hu.zsof.gitsearchapp.ui.search.SearchFragmentDirections
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
@@ -23,13 +26,19 @@ class SearchAdapter @Inject constructor(private val searchList: List<ProjectData
         with(holder) {
             with(searchList[position]) {
                 val formatStringToDate = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
-                val lastUpdate: Date = formatStringToDate.parse(updateDate) as Date
+                val lastUpdate: Date = updateDate?.let { formatStringToDate.parse(it) } as Date
                 val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm")
 
-                binding.reposiotryName.text = repositoryName
+                binding.repositoryName.text = repositoryName
                 binding.description.text = desc
                 binding.lastUpdate.text = formatter.format(lastUpdate)
                 binding.starsNumber.text = starNumber.toString()
+
+                itemView.setOnClickListener {
+                    LocalData.searchItem = searchList[position]
+                    val action = SearchFragmentDirections.actionSearchListFrToDetailsFr()
+                    itemView.findNavController().navigate(action)
+                }
             }
         }
     }

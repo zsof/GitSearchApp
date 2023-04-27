@@ -10,28 +10,28 @@ data class SearchResponse(
 
 data class ProjectData(
     @field:Json(name = "name")
-    val repositoryName: String,
-    val owner: OwnerData,
+    val repositoryName: String? = null,
+    val owner: OwnerData = OwnerData(),
     @field:Json(name = "description")
-    val desc: String,
-    @field:Json(name = "url")
-    val projectLink: String,
+    val desc: String? = null,
+    @field:Json(name = "html_url")
+    val projectLink: String? = null,
     @field:Json(name = "created_at")
-    val createDate: String,
+    val createDate: String? = null,
     @field:Json(name = "updated_at")
-    val updateDate: String,
+    val updateDate: String? = null,
     @field:Json(name = "forks_count")
-    val forkNumber: Int,
+    val forkNumber: Int? = null,
     @field:Json(name = "stargazers_count")
-    val starNumber: Int,
+    val starNumber: Int? = null,
 )
 
 data class OwnerData(
     @field:Json(name = "login")
-    val ownerName: String,
+    val ownerName: String? = null,
     @field:Json(name = "avatar_url")
-    val avatarUrl: String,
-    @field:Json(name = "url")
-    val ownerLink: String,
+    val avatarUrl: String? = null,
+    @field:Json(name = "html_url")
+    val ownerLink: String? = null,
 
 )

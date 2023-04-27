@@ -8,9 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:animateLayoutChanges="true">
-
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/detailsOwnerName"
@@ -31,16 +29,17 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:src="@drawable/ic_star"
-            app:layout_constraintEnd_toStartOf="@+id/starsNumber"
+            app:layout_constraintEnd_toStartOf="@+id/detailsRepositoryStars"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/detailsOwnerName" />
 
         <TextView
-            android:id="@+id/starsNumber"
+            android:id="@+id/detailsRepositoryStars"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -48,40 +47,47 @@
             app:layout_constraintTop_toTopOf="@id/starIcon"
             tools:text="6" />
 
+        <TextView
+            android:id="@+id/detailsOwnerLink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:textSize="18sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/starIcon"
+            tools:text="Link" />
+
         <ImageView
             android:id="@+id/detailsAvatar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:scaleType="fitXY"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/starIcon" />
+            app:layout_constraintTop_toBottomOf="@id/detailsOwnerLink" />
 
         <TextView
-            android:id="@+id/detailsGithubLink"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/detailsAvatar"
-            tools:text="Link" />
-
-        <TextView
-            android:id="@+id/repositoryName"
+            android:id="@+id/repName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:text="@string/rep_name"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/detailsGithubLink" />
+            app:layout_constraintTop_toBottomOf="@id/detailsAvatar" />
 
         <TextView
             android:id="@+id/detailsRepositoryName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            app:layout_constraintStart_toEndOf="@id/repositoryName"
-            app:layout_constraintTop_toBottomOf="@id/detailsGithubLink"
+            android:textSize="18sp"
+            android:textStyle="italic"
+            app:layout_constraintStart_toEndOf="@id/repName"
+            app:layout_constraintTop_toBottomOf="@id/detailsAvatar"
             tools:text="Repository name" />
 
         <TextView
@@ -90,6 +96,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:text="@string/rep_description"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/detailsRepositoryName" />
 
@@ -98,6 +105,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
+            android:textSize="18sp"
+            android:textStyle="italic"
             app:layout_constraintStart_toEndOf="@id/repositoryDesc"
             app:layout_constraintTop_toBottomOf="@id/detailsRepositoryName"
             tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
@@ -108,6 +117,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:text="@string/rep_link"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/detailsRepositoryDesc" />
 
@@ -116,9 +126,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            app:layout_constraintStart_toEndOf="@id/repositoryDesc"
+            android:textSize="18sp"
+            android:textStyle="italic"
+            app:layout_constraintStart_toEndOf="@id/repositoryLink"
             app:layout_constraintTop_toBottomOf="@id/detailsRepositoryDesc"
-            tools:text="link" />
+            tools:text="Link" />
 
         <TextView
             android:id="@+id/repositoryFork"
@@ -126,6 +138,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:text="@string/rep_forks"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/detailsRepositoryLink" />
 
@@ -134,7 +147,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            app:layout_constraintStart_toEndOf="@id/repositoryDesc"
+            android:textSize="18sp"
+            android:textStyle="italic"
+            app:layout_constraintStart_toEndOf="@id/repositoryFork"
             app:layout_constraintTop_toBottomOf="@id/detailsRepositoryLink"
             tools:text="3" />
 
@@ -144,6 +159,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:text="@string/rep_create_date"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/detailsRepositoryFork" />
 
@@ -152,7 +168,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            app:layout_constraintStart_toEndOf="@id/repositoryDesc"
+            android:textSize="18sp"
+            android:textStyle="italic"
+            app:layout_constraintStart_toEndOf="@id/repositoryCreate"
             app:layout_constraintTop_toBottomOf="@id/detailsRepositoryFork"
             tools:text="2022-04-05" />
 
@@ -161,7 +179,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="Last update: "
+            android:text="@string/rep_last_update"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/detailsRepositoryCreate" />
 
@@ -170,25 +189,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            app:layout_constraintStart_toEndOf="@id/repositoryDesc"
+            android:textSize="18sp"
+            android:textStyle="italic"
+            app:layout_constraintStart_toEndOf="@id/repositoryUpdate"
             app:layout_constraintTop_toBottomOf="@id/detailsRepositoryCreate"
             tools:text="2022-04-07" />
-
-
-
-        <!-- <com.airbnb.lottie.LottieAnimationView
-             android:id="@+id/animationView"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:background="@null"
-             android:visibility="invisible"
-             app:layout_constraintBottom_toBottomOf="parent"
-             app:layout_constraintEnd_toEndOf="parent"
-             app:layout_constraintStart_toStartOf="parent"
-             app:layout_constraintTop_toBottomOf="@id/searchTextInputLayout"
-             app:lottie_autoPlay="true"
-             app:lottie_loop="true"
-             app:lottie_rawRes="@raw/loading" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
