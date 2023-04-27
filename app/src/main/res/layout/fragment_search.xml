@@ -65,9 +65,8 @@
         android:layout_marginTop="4dp"
         android:background="@android:color/transparent"
         android:scaleType="fitXY"
-        android:src="@drawable/ic_prev"
+        android:src="@drawable/ic_prev_disable"
         app:layout_constraintStart_toStartOf="parent"
-        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent" />
 
     <ImageButton
@@ -78,8 +77,7 @@
         android:layout_marginTop="4dp"
         android:background="@android:color/transparent"
         android:scaleType="fitXY"
-        android:src="@drawable/ic_next"
-        android:visibility="invisible"
+        android:src="@drawable/ic_next_disable"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
 

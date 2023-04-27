@@ -52,6 +52,8 @@ class SearchFragment : Fragment() {
     }
 
     private fun setupBindings() {
+        arrowButtonsInvisible()
+
         binding.searchTextInput.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 arrowButtonsInvisible()
@@ -79,15 +81,21 @@ class SearchFragment : Fragment() {
             currentPageNumber++
             search(currentPageNumber)
 
-            binding.prevButton.visibility = View.VISIBLE
+            binding.prevButton.setImageResource(R.drawable.ic_prev)
+            binding.prevButton.isEnabled = true
         }
 
         binding.prevButton.setOnClickListener {
             currentPageNumber--
             search(currentPageNumber)
 
-            binding.prevButton.visibility =
-                if (currentPageNumber == 1) View.INVISIBLE else View.VISIBLE
+            if (currentPageNumber == 1) {
+                binding.prevButton.setImageResource(R.drawable.ic_prev_disable)
+                binding.prevButton.isEnabled = false
+            } else {
+                binding.prevButton.setImageResource(R.drawable.ic_prev)
+                binding.prevButton.isEnabled = true
+            }
         }
     }
 
@@ -120,8 +128,13 @@ class SearchFragment : Fragment() {
                         totalPageNumber =
                             ceil(totalItems / Constants.RESULT_PER_PAGE.toDouble()).toInt()
 
-                        binding.nextButton.visibility =
-                            if (currentPageNumber == totalPageNumber) View.INVISIBLE else View.VISIBLE
+                        if (currentPageNumber == totalPageNumber) {
+                            binding.nextButton.setImageResource(R.drawable.ic_next_disable)
+                            binding.nextButton.isEnabled = false
+                        } else {
+                            binding.nextButton.setImageResource(R.drawable.ic_next)
+                            binding.nextButton.isEnabled = true
+                        }
                     }
                 }
                 is ResultWrapper.Error -> {
@@ -133,7 +146,10 @@ class SearchFragment : Fragment() {
     }
 
     private fun arrowButtonsInvisible() {
-        binding.prevButton.visibility = View.INVISIBLE
-        binding.nextButton.visibility = View.INVISIBLE
+        binding.prevButton.setImageResource(R.drawable.ic_prev_disable)
+        binding.prevButton.isEnabled = false
+
+        binding.nextButton.setImageResource(R.drawable.ic_next_disable)
+        binding.nextButton.isEnabled = false
     }
 }

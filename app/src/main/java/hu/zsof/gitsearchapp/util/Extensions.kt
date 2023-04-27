@@ -2,8 +2,6 @@ package hu.zsof.gitsearchapp.util
 
 import android.app.Activity
 import android.content.Context
-import android.graphics.Color
-import android.graphics.PorterDuff
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
@@ -20,9 +18,4 @@ fun Context.hideKeyboard(view: View) {
 
 fun Fragment.hideKeyboard() {
     view?.let { activity?.hideKeyboard(it) }
-}
-
-fun View.disable() {
-    background.setColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY)
-    isClickable = false
 }
