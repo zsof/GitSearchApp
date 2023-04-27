@@ -11,21 +11,21 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
-import hu.zsof.gitsearchapp.databinding.FragmentDeatilsBinding
+import hu.zsof.gitsearchapp.databinding.FragmentDetailsBinding
 import hu.zsof.gitsearchapp.module.LocalData
 import java.text.SimpleDateFormat
 import java.util.*
 
 @AndroidEntryPoint
 class DetailsFragment : Fragment() {
-    private lateinit var binding: FragmentDeatilsBinding
+    private lateinit var binding: FragmentDetailsBinding
     private val viewModel: DetailsViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        binding = FragmentDeatilsBinding.inflate(inflater, container, false)
+        binding = FragmentDetailsBinding.inflate(inflater, container, false)
 
         return binding.root
     }

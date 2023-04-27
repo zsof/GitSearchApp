@@ -20,6 +20,6 @@
         android:id="@+id/detailsFragment"
         android:name="hu.zsof.gitsearchapp.ui.detail.DetailsFragment"
         android:label="DetailsFragment"
-        tools:layout="@layout/fragment_deatils" />
+        tools:layout="@layout/fragment_details" />
 
 </navigation>

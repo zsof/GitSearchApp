@@ -12,6 +12,7 @@ import hu.zsof.gitsearchapp.R
 import hu.zsof.gitsearchapp.adapter.SearchAdapter
 import hu.zsof.gitsearchapp.databinding.FragmentSearchBinding
 import hu.zsof.gitsearchapp.network.repository.Resource
+import hu.zsof.gitsearchapp.util.hideKeyboard
 
 @AndroidEntryPoint
 class SearchFragment : Fragment() {
@@ -43,6 +44,7 @@ class SearchFragment : Fragment() {
                     searchAdapter = SearchAdapter(result.data?.items ?: mutableListOf())
                     recyclerSearchItem.adapter = searchAdapter
                 }
+                this@SearchFragment.hideKeyboard()
             }
 
             viewModel.searchResult.observe(viewLifecycleOwner) {

@@ -54,6 +54,7 @@
             android:layout_margin="8dp"
             android:textSize="18sp"
             android:textStyle="italic"
+            android:autoLink="web"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/starIcon"
@@ -102,12 +103,13 @@
 
         <TextView
             android:id="@+id/detailsRepositoryDesc"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:textSize="18sp"
             android:textStyle="italic"
             app:layout_constraintStart_toEndOf="@id/repositoryDesc"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/detailsRepositoryName"
             tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
 
@@ -123,11 +125,15 @@
 
         <TextView
             android:id="@+id/detailsRepositoryLink"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:textSize="18sp"
+            android:autoLink="web"
+            android:maxLines="2"
+            android:singleLine="false"
             android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="0dp"
             app:layout_constraintStart_toEndOf="@id/repositoryLink"
             app:layout_constraintTop_toBottomOf="@id/detailsRepositoryDesc"
             tools:text="Link" />
