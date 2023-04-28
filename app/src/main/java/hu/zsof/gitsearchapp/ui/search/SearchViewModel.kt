@@ -1,5 +1,6 @@
 package hu.zsof.gitsearchapp.ui.search
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -22,6 +23,7 @@ class SearchViewModel @Inject constructor(private val searchRepository: SearchRe
         viewModelScope.launch {
             searchResult.postValue(ResultWrapper.Loading())
             searchResult.postValue(searchRepository.getSearchResult(query, page))
+            Log.d("SearchViewModel", "Get search result call is done")
         }
     }
 }

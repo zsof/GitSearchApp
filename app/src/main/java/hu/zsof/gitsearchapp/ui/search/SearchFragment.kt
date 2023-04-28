@@ -1,6 +1,7 @@
 package hu.zsof.gitsearchapp.ui.search
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -52,11 +53,11 @@ class SearchFragment : Fragment() {
     private fun setupBindings() {
         if ((viewModel.searchResult.value?.data?.totalCount ?: 0) == 0) {
             arrowButtonsInvisible()
+            Log.d("SearchFragment", "No data available")
         }
 
         binding.searchTextInput.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                arrowButtonsInvisible()
                 search()
                 this@SearchFragment.hideKeyboard()
                 return@setOnEditorActionListener true
@@ -65,8 +66,6 @@ class SearchFragment : Fragment() {
         }
 
         binding.searchButton.setOnClickListener {
-            arrowButtonsInvisible()
-
             if (binding.searchTextInput.text.isNullOrEmpty()) {
                 showToast(
                     getString(R.string.give_parameter),
@@ -96,6 +95,8 @@ class SearchFragment : Fragment() {
         viewModel.searchResult.observe(viewLifecycleOwner) {
             when (it) {
                 is ResultWrapper.Loading -> {
+                    arrowButtonsInvisible()
+
                     binding.animationView.visibility = View.VISIBLE
                     binding.animationView.playAnimation()
                 }
@@ -131,10 +132,11 @@ class SearchFragment : Fragment() {
                     }
                 }
                 is ResultWrapper.Error -> {
+                    arrowButtonsInvisible()
+
                     binding.animationView.visibility = View.GONE
                     binding.animationView.pauseAnimation()
                     showToast(it.message)
-                    arrowButtonsInvisible()
                 }
             }
         }
